@@ -5,6 +5,7 @@ package cn.meko.service;/**
 
 import cn.meko.entity.News;
 import cn.meko.entity.NewsExample;
+import cn.meko.model.BootStrapDataGridResult;
 
 import java.util.List;
 
@@ -17,5 +18,6 @@ import java.util.List;
  **/
 public interface NewsService {
     void createNews(News news) throws Exception;
-    List<News> findNews(NewsExample example) throws Exception;
+    List<News> findNews(News news) throws Exception;
+
 }

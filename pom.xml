@@ -12,11 +12,27 @@
         <module>news-mybatis</module>
         <module>news-beans</module>
         <module>news-service</module>
-        <module>news-protal</module>
         <module>news-serviceimpl</module>
         <module>news-mapper</module>
         <module>news-webapp</module>
     </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8181</port>
+                    <path>/bus</path>
+                    <url>http://47.102.117.31:8080/manager/text</url><!--url为tomcat访问路径-->
+                    <username>tomcat</username>  <!--之前设置的用户名-->
+                    <password>tomcat</password>  <!--之前设置的密 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

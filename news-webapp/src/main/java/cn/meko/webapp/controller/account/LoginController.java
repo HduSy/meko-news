@@ -8,7 +8,7 @@ import cn.meko.consts.SystemConst;
 import cn.meko.entity.UserInfo;
 import cn.meko.model.AppJsonMessage;
 import cn.meko.model.CommonConst;
-import cn.meko.webapp.utils.MD5Utils;
+import cn.meko.webapp.controller.core.BaseController;
 import cn.meko.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *@Version 1.0
  **/
 @Controller
-public class LoginController extends BaseController{
+public class LoginController extends BaseController {
 
     @Autowired
     private UserInfoService userInfoService;

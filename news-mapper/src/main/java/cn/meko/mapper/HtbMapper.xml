@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.meko.mapper.HtbMapper" >
+  <resultMap id="BaseResultMap" type="cn.meko.entity.Htb" >
+    <id column="htbh" property="htbh" jdbcType="CHAR" />
+    <result column="htlb" property="htlb" jdbcType="CHAR" />
+    <result column="htmc" property="htmc" jdbcType="CHAR" />
+    <result column="sbjyh" property="sbjyh" jdbcType="CHAR" />
+    <result column="jfmc" property="jfmc" jdbcType="CHAR" />
+    <result column="yfmc" property="yfmc" jdbcType="CHAR" />
+    <result column="bfmc" property="bfmc" jdbcType="CHAR" />
+    <result column="qdrq" property="qdrq" jdbcType="DATE" />
+    <result column="htqx" property="htqx" jdbcType="INTEGER" />
+    <result column="fkfs" property="fkfs" jdbcType="VARCHAR" />
+    <result column="sbsysm" property="sbsysm" jdbcType="INTEGER" />
+    <result column="sbzbk" property="sbzbk" jdbcType="DOUBLE" />
+    <result column="sbzbq" property="sbzbq" jdbcType="INTEGER" />
+    <result column="qttk" property="qttk" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    htbh, htlb, htmc, sbjyh, jfmc, yfmc, bfmc, qdrq, htqx, fkfs, sbsysm, sbzbk, sbzbq, 
+    qttk
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.meko.entity.HtbExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from htb
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from htb
+    where htbh = #{htbh,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from htb
+    where htbh = #{htbh,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.meko.entity.HtbExample" >
+    delete from htb
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.meko.entity.Htb" >
+    insert into htb (htbh, htlb, htmc, sbjyh, 
+      jfmc, yfmc, bfmc, qdrq, 
+      htqx, fkfs, sbsysm, 
+      sbzbk, sbzbq, qttk)
+    values (#{htbh,jdbcType=CHAR}, #{htlb,jdbcType=CHAR}, #{htmc,jdbcType=CHAR}, #{sbjyh,jdbcType=CHAR}, 
+      #{jfmc,jdbcType=CHAR}, #{yfmc,jdbcType=CHAR}, #{bfmc,jdbcType=CHAR}, #{qdrq,jdbcType=DATE}, 
+      #{htqx,jdbcType=INTEGER}, #{fkfs,jdbcType=VARCHAR}, #{sbsysm,jdbcType=INTEGER}, 
+      #{sbzbk,jdbcType=DOUBLE}, #{sbzbq,jdbcType=INTEGER}, #{qttk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.meko.entity.Htb" >
+    insert into htb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="htbh != null" >
+        htbh,
+      </if>
+      <if test="htlb != null" >
+        htlb,
+      </if>
+      <if test="htmc != null" >
+        htmc,
+      </if>
+      <if test="sbjyh != null" >
+        sbjyh,
+      </if>
+      <if test="jfmc != null" >
+        jfmc,
+      </if>
+      <if test="yfmc != null" >
+        yfmc,
+      </if>
+      <if test="bfmc != null" >
+        bfmc,
+      </if>
+      <if test="qdrq != null" >
+        qdrq,
+      </if>
+      <if test="htqx != null" >
+        htqx,
+      </if>
+      <if test="fkfs != null" >
+        fkfs,
+      </if>
+      <if test="sbsysm != null" >
+        sbsysm,
+      </if>
+      <if test="sbzbk != null" >
+        sbzbk,
+      </if>
+      <if test="sbzbq != null" >
+        sbzbq,
+      </if>
+      <if test="qttk != null" >
+        qttk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="htbh != null" >
+        #{htbh,jdbcType=CHAR},
+      </if>
+      <if test="htlb != null" >
+        #{htlb,jdbcType=CHAR},
+      </if>
+      <if test="htmc != null" >
+        #{htmc,jdbcType=CHAR},
+      </if>
+      <if test="sbjyh != null" >
+        #{sbjyh,jdbcType=CHAR},
+      </if>
+      <if test="jfmc != null" >
+        #{jfmc,jdbcType=CHAR},
+      </if>
+      <if test="yfmc != null" >
+        #{yfmc,jdbcType=CHAR},
+      </if>
+      <if test="bfmc != null" >
+        #{bfmc,jdbcType=CHAR},
+      </if>
+      <if test="qdrq != null" >
+        #{qdrq,jdbcType=DATE},
+      </if>
+      <if test="htqx != null" >
+        #{htqx,jdbcType=INTEGER},
+      </if>
+      <if test="fkfs != null" >
+        #{fkfs,jdbcType=VARCHAR},
+      </if>
+      <if test="sbsysm != null" >
+        #{sbsysm,jdbcType=INTEGER},
+      </if>
+      <if test="sbzbk != null" >
+        #{sbzbk,jdbcType=DOUBLE},
+      </if>
+      <if test="sbzbq != null" >
+        #{sbzbq,jdbcType=INTEGER},
+      </if>
+      <if test="qttk != null" >
+        #{qttk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.meko.entity.HtbExample" resultType="java.lang.Integer" >
+    select count(*) from htb
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update htb
+    <set >
+      <if test="record.htbh != null" >
+        htbh = #{record.htbh,jdbcType=CHAR},
+      </if>
+      <if test="record.htlb != null" >
+        htlb = #{record.htlb,jdbcType=CHAR},
+      </if>
+      <if test="record.htmc != null" >
+        htmc = #{record.htmc,jdbcType=CHAR},
+      </if>
+      <if test="record.sbjyh != null" >
+        sbjyh = #{record.sbjyh,jdbcType=CHAR},
+      </if>
+      <if test="record.jfmc != null" >
+        jfmc = #{record.jfmc,jdbcType=CHAR},
+      </if>
+      <if test="record.yfmc != null" >
+        yfmc = #{record.yfmc,jdbcType=CHAR},
+      </if>
+      <if test="record.bfmc != null" >
+        bfmc = #{record.bfmc,jdbcType=CHAR},
+      </if>
+      <if test="record.qdrq != null" >
+        qdrq = #{record.qdrq,jdbcType=DATE},
+      </if>
+      <if test="record.htqx != null" >
+        htqx = #{record.htqx,jdbcType=INTEGER},
+      </if>
+      <if test="record.fkfs != null" >
+        fkfs = #{record.fkfs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbsysm != null" >
+        sbsysm = #{record.sbsysm,jdbcType=INTEGER},
+      </if>
+      <if test="record.sbzbk != null" >
+        sbzbk = #{record.sbzbk,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sbzbq != null" >
+        sbzbq = #{record.sbzbq,jdbcType=INTEGER},
+      </if>
+      <if test="record.qttk != null" >
+        qttk = #{record.qttk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update htb
+    set htbh = #{record.htbh,jdbcType=CHAR},
+      htlb = #{record.htlb,jdbcType=CHAR},
+      htmc = #{record.htmc,jdbcType=CHAR},
+      sbjyh = #{record.sbjyh,jdbcType=CHAR},
+      jfmc = #{record.jfmc,jdbcType=CHAR},
+      yfmc = #{record.yfmc,jdbcType=CHAR},
+      bfmc = #{record.bfmc,jdbcType=CHAR},
+      qdrq = #{record.qdrq,jdbcType=DATE},
+      htqx = #{record.htqx,jdbcType=INTEGER},
+      fkfs = #{record.fkfs,jdbcType=VARCHAR},
+      sbsysm = #{record.sbsysm,jdbcType=INTEGER},
+      sbzbk = #{record.sbzbk,jdbcType=DOUBLE},
+      sbzbq = #{record.sbzbq,jdbcType=INTEGER},
+      qttk = #{record.qttk,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.meko.entity.Htb" >
+    update htb
+    <set >
+      <if test="htlb != null" >
+        htlb = #{htlb,jdbcType=CHAR},
+      </if>
+      <if test="htmc != null" >
+        htmc = #{htmc,jdbcType=CHAR},
+      </if>
+      <if test="sbjyh != null" >
+        sbjyh = #{sbjyh,jdbcType=CHAR},
+      </if>
+      <if test="jfmc != null" >
+        jfmc = #{jfmc,jdbcType=CHAR},
+      </if>
+      <if test="yfmc != null" >
+        yfmc = #{yfmc,jdbcType=CHAR},
+      </if>
+      <if test="bfmc != null" >
+        bfmc = #{bfmc,jdbcType=CHAR},
+      </if>
+      <if test="qdrq != null" >
+        qdrq = #{qdrq,jdbcType=DATE},
+      </if>
+      <if test="htqx != null" >
+        htqx = #{htqx,jdbcType=INTEGER},
+      </if>
+      <if test="fkfs != null" >
+        fkfs = #{fkfs,jdbcType=VARCHAR},
+      </if>
+      <if test="sbsysm != null" >
+        sbsysm = #{sbsysm,jdbcType=INTEGER},
+      </if>
+      <if test="sbzbk != null" >
+        sbzbk = #{sbzbk,jdbcType=DOUBLE},
+      </if>
+      <if test="sbzbq != null" >
+        sbzbq = #{sbzbq,jdbcType=INTEGER},
+      </if>
+      <if test="qttk != null" >
+        qttk = #{qttk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where htbh = #{htbh,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.meko.entity.Htb" >
+    update htb
+    set htlb = #{htlb,jdbcType=CHAR},
+      htmc = #{htmc,jdbcType=CHAR},
+      sbjyh = #{sbjyh,jdbcType=CHAR},
+      jfmc = #{jfmc,jdbcType=CHAR},
+      yfmc = #{yfmc,jdbcType=CHAR},
+      bfmc = #{bfmc,jdbcType=CHAR},
+      qdrq = #{qdrq,jdbcType=DATE},
+      htqx = #{htqx,jdbcType=INTEGER},
+      fkfs = #{fkfs,jdbcType=VARCHAR},
+      sbsysm = #{sbsysm,jdbcType=INTEGER},
+      sbzbk = #{sbzbk,jdbcType=DOUBLE},
+      sbzbq = #{sbzbq,jdbcType=INTEGER},
+      qttk = #{qttk,jdbcType=VARCHAR}
+    where htbh = #{htbh,jdbcType=CHAR}
+  </update>
+</mapper>

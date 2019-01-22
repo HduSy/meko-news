@@ -1,4 +1,4 @@
-package cn.meko.protal.controller.account;
+package cn.meko.webapp.controller.core;
 
 
 import cn.meko.model.AppJsonMessage;

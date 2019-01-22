@@ -7,6 +7,7 @@ import cn.meko.entity.UserInfo;
 import cn.meko.model.AppJsonMessage;
 import cn.meko.model.CommonConst;
 import cn.meko.service.UserInfoService;
+import cn.meko.webapp.controller.core.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
